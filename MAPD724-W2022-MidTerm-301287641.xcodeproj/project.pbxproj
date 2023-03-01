@@ -39,6 +39,8 @@
 		C8E4E06B29AFAE200022374C /* nextButton.png in Resources */ = {isa = PBXBuildFile; fileRef = C8E4E06029AFAE200022374C /* nextButton.png */; };
 		C8E4E06C29AFAE200022374C /* ocean.png in Resources */ = {isa = PBXBuildFile; fileRef = C8E4E06129AFAE200022374C /* ocean.png */; };
 		C8E4E06D29AFAE200022374C /* startButton.png in Resources */ = {isa = PBXBuildFile; fileRef = C8E4E06229AFAE200022374C /* startButton.png */; };
+		C8E4E06F29AFE6EB0022374C /* CollisionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E4E06E29AFE6EB0022374C /* CollisionManager.swift */; };
+		C8E4E07129AFE8F00022374C /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E4E07029AFE8F00022374C /* ScoreManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +77,8 @@
 		C8E4E06029AFAE200022374C /* nextButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nextButton.png; sourceTree = "<group>"; };
 		C8E4E06129AFAE200022374C /* ocean.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ocean.png; sourceTree = "<group>"; };
 		C8E4E06229AFAE200022374C /* startButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startButton.png; sourceTree = "<group>"; };
+		C8E4E06E29AFE6EB0022374C /* CollisionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionManager.swift; sourceTree = "<group>"; };
+		C8E4E07029AFE8F00022374C /* ScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +188,8 @@
 		C8E4E04B29AFAB9C0022374C /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				C8E4E06E29AFE6EB0022374C /* CollisionManager.swift */,
+				C8E4E07029AFE8F00022374C /* ScoreManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -313,9 +319,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8E4E07129AFE8F00022374C /* ScoreManager.swift in Sources */,
 				C8E4E04D29AFABBF0022374C /* Ocean.swift in Sources */,
 				C8E4E04429AFA9CD0022374C /* GameObject.swift in Sources */,
 				C8E4E04F29AFABCC0022374C /* Island.swift in Sources */,
+				C8E4E06F29AFE6EB0022374C /* CollisionManager.swift in Sources */,
 				C8E4E04629AFA9D90022374C /* GameProtocol.swift in Sources */,
 				C8E4E00829AFA4FB0022374C /* GameScene.swift in Sources */,
 				C8E4E05329AFABE30022374C /* Cloud.swift in Sources */,
