@@ -11,28 +11,40 @@ import GameplayKit
 class GameScene: SKScene {
     
     // varaibles
-    var ocean: Ocean?
-    
+    var ocean1: Ocean?
+    var ocean2: Ocean?
+    var player: Player?
     
     override func sceneDidLoad() {
         name = "GAME"
         
-        // add ocean to scene
-        ocean = Ocean()
-        ocean?.Reset()
-        addChild(ocean!)
+        // add ocean1 to scene
+        ocean1 = Ocean()
+        ocean1?.Reset()
+        addChild(ocean1!)
+        
+        // add ocean2 to scene
+        ocean2 = Ocean()
+        ocean2?.position.x = 270
+        addChild(ocean2!)
+        
+        // add player to scene
+        player = Player()
+        player?.Reset()
+        player?.zRotation = M_PI / -2.0
+        addChild(player!)
     }
     
     func touchDown(atPoint pos : CGPoint) {
-        print("Touch Down")
+        player?.TouchMove(newPos: CGPoint(x: -342, y: pos.y))
     }
     
     func touchMoved(toPoint pos : CGPoint) {
-        print("touch Move")
+        player?.TouchMove(newPos:  CGPoint(x: -342, y: pos.y))
     }
     
     func touchUp(atPoint pos : CGPoint) {
-        print("Touch Up")
+        player?.TouchMove(newPos:  CGPoint(x: -342, y: pos.y))
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -53,6 +65,8 @@ class GameScene: SKScene {
     
     
     override func update(_ currentTime: TimeInterval) {
-        ocean?.Update()
+        ocean1?.Update()
+        ocean2?.Update()
+        player?.Update()
     }
 }
