@@ -8,7 +8,7 @@
 import GameplayKit
 import SpriteKit
 
-class GameObject : SKSpriteNode, GameProtocol
+class GameObject: SKSpriteNode, GameProtocol
 {
     // public instance members
     // item horizontal speed
