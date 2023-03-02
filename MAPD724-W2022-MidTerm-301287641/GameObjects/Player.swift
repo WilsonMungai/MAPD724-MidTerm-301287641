@@ -20,6 +20,8 @@ class Player: GameObject {
     
     override func Start() {
         zPosition = Layer.plane.rawValue
+        rotation()
+        Reset()
     }
     
     override func Update() {
@@ -44,5 +46,10 @@ class Player: GameObject {
     
     func TouchMove(newPos: CGPoint) {
         position = newPos
+    }
+    
+    // rotate the object
+    func rotation() {
+        zRotation = CGFloat.pi / -2.0
     }
 }

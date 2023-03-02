@@ -17,8 +17,7 @@ class GameScene: SKScene {
     var ocean2: Ocean?
     var player: Player?
     var island: Island?
-    var cloud1: Cloud?
-    var cloud2: Cloud?
+    var clouds: [Cloud] = []
     
     override func sceneDidLoad() {
         name = "GAME"
@@ -30,24 +29,22 @@ class GameScene: SKScene {
         
         // add ocean2 to scene
         ocean2 = Ocean()
-        ocean2?.position.x = 270
+        ocean2?.position.x = -705
         addChild(ocean2!)
         
         // add player to scene
         player = Player()
-        player?.Reset()
-        player?.zRotation = M_PI / -2.0
         addChild(player!)
         
         // add island to scene
         island = Island()
         addChild(island!)
         
-        cloud1 = Cloud()
-        addChild(cloud1!)
-        
-        cloud2 = Cloud()
-        addChild(cloud2!)
+        for _ in 0...1 {
+            let cloud = Cloud()
+            clouds.append(cloud)
+            addChild(cloud)
+        }
         
         // Engine Sound - Background noise / music
         let engineSound = SKAudioNode(fileNamed: "engine.mp3")
@@ -107,7 +104,14 @@ class GameScene: SKScene {
         ocean2?.Update()
         player?.Update()
         island?.Update()
-        cloud1?.Update()
-        cloud2?.Update()
+        
+        CollisionManager.SquaredRadiusCheck(scene: self, object1: player!, object2: island!)
+        
+        // update each cloud in the clouds array
+        for cloud in clouds {
+            cloud.Update()
+            CollisionManager.SquaredRadiusCheck(scene: self, object1: player!, object2: cloud)
+        }
+
     }
 }
