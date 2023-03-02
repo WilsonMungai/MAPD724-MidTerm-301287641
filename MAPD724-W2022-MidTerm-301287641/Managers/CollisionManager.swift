@@ -54,7 +54,7 @@ class CollisionManager {
                     scene.run(SKAction.playSoundFileNamed("thunder", waitForCompletion: false))
                     if(ScoreManager.Lives < 1)
                     {
-//                        gameViewController?.presentEndScene()
+                        gameViewController?.presentEndScene()
                     }
                     break
                 default:

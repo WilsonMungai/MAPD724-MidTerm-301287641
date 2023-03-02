@@ -10,26 +10,18 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+    
+    var currentScene: GKScene?
 
     @IBOutlet weak var LivesLabel: UILabel!
     @IBOutlet weak var ScoreLabel: UILabel!
+    @IBOutlet weak var StartLabel: UILabel!
+    @IBOutlet weak var StartButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let scene = GKScene(fileNamed: "GameScene") {
-            
-            if let sceneNode = scene.rootNode as! GameScene? {
-                
-                sceneNode.scaleMode = .aspectFill
-                
-                if let view = self.view as! SKView? {
-                    view.presentScene(sceneNode)
-                    view.ignoresSiblingOrder = true
-                   
-                }
-            }
-        }
+        CollisionManager.gameViewController = self
+        presentStartScene()
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -49,4 +41,46 @@ class GameViewController: UIViewController {
     {
         ScoreLabel.text = "Score: \(ScoreManager.Score)"
     }
+    
+    func setScene(sceneName: String) -> Void
+    {
+        currentScene = GKScene(fileNamed: sceneName)
+        if let scene = currentScene!.rootNode as! SKScene?
+        {
+            scene.scaleMode = .aspectFill
+            if let view = self.view as! SKView?
+            {
+                view.presentScene(scene)
+                view.ignoresSiblingOrder = true
+            }
+        }
+    }
+    
+    func presentStartScene(){
+        ScoreLabel.isHidden = true
+        LivesLabel.isHidden = true
+        StartLabel.isHidden = false
+        StartButton.isHidden = false
+        setScene(sceneName: "StartScene")
+    }
+    
+    func presentEndScene() {
+        ScoreLabel.isHidden = true
+        LivesLabel.isHidden = true
+        setScene(sceneName: "EndScene")
+    }
+    
+    @IBAction func StartButton_Pressed(_ sender: Any) {
+        ScoreLabel.isHidden = false
+        LivesLabel.isHidden = false
+        StartLabel.isHidden = true
+        StartButton.isHidden = true
+        // Initialize the Lives and Score
+        ScoreManager.Score = 0
+        ScoreManager.Lives = 5
+        updateLivesLabel()
+        updateScoreLabel()
+        setScene(sceneName: "GameScene")
+    }
+    
 }
